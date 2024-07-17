@@ -133,7 +133,7 @@ async function submitUserMessage(content: string) {
     `
     You are a conversation bot to talk about a software engineer, Finn Bergquist, and why you should hire him.
     He is a software engineer with experience in full-stack development, and he is passionate about building products that make a difference.
-    `
+    `,
 
     //`
     // You are a stock trading conversation bot and you can help users buy stocks, step by step.
