@@ -15,16 +15,16 @@ import {
   BotCard,
   BotMessage,
   SystemMessage,
-  Stock,
-  Purchase
-} from '@/components/stocks'
+  Project,
+  Experience
+} from '@/components/portfolio'
 
 import { z } from 'zod'
-import { EventsSkeleton } from '@/components/stocks/events-skeleton'
-import { Events } from '@/components/stocks/events'
-import { StocksSkeleton } from '@/components/stocks/stocks-skeleton'
-import { Stocks } from '@/components/stocks/stocks'
-import { StockSkeleton } from '@/components/stocks/stock-skeleton'
+import { ProjectsSkeleton } from '@/components/portfolio/projects-skeleton'
+import { Projects } from '@/components/portfolio/projects'
+import { ExperiencesSkeleton } from '@/components/portfolio/experiences-skeleton'
+import { Experiences } from '@/components/portfolio/experiences'
+import { ExperienceSkeleton } from '@/components/portfolio/experience-skeleton'
 import {
   formatNumber,
   runAsyncFnWithoutBlocking,
@@ -32,20 +32,20 @@ import {
   nanoid
 } from '@/lib/utils'
 import { saveChat } from '@/app/actions'
-import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
+import { SpinnerMessage, UserMessage } from '@/components/portfolio/message'
 import { Chat, Message } from '@/lib/types'
 import { auth } from '@/auth'
 
-async function confirmPurchase(symbol: string, price: number, amount: number) {
+async function showProjects() {
   'use server'
 
   const aiState = getMutableAIState<typeof AI>()
 
-  const purchasing = createStreamableUI(
+  const loading = createStreamableUI(
     <div className="inline-flex items-start gap-1 md:items-center">
       {spinner}
       <p className="mb-2">
-        Purchasing {amount} ${symbol}...
+        Loading projects...
       </p>
     </div>
   )
@@ -55,30 +55,34 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
   runAsyncFnWithoutBlocking(async () => {
     await sleep(1000)
 
-    purchasing.update(
+    loading.update(
       <div className="inline-flex items-start gap-1 md:items-center">
         {spinner}
         <p className="mb-2">
-          Purchasing {amount} ${symbol}... working on it...
+          Loading projects... almost there...
         </p>
       </div>
     )
 
     await sleep(1000)
 
-    purchasing.done(
+    const projects = [
+      { title: 'Project 1', description: 'Description of project 1' },
+      { title: 'Project 2', description: 'Description of project 2' },
+      // Add more projects here
+    ]
+
+    loading.done(
       <div>
         <p className="mb-2">
-          You have successfully purchased {amount} ${symbol}. Total cost:{' '}
-          {formatNumber(amount * price)}
+          Here are some of my projects.
         </p>
       </div>
     )
 
     systemMessage.done(
       <SystemMessage>
-        You have purchased {amount} shares of {symbol} at ${price}. Total cost ={' '}
-        {formatNumber(amount * price)}.
+        I have loaded my projects.
       </SystemMessage>
     )
 
@@ -89,16 +93,86 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
         {
           id: nanoid(),
           role: 'system',
-          content: `[User has purchased ${amount} shares of ${symbol} at ${price}. Total cost = ${
-            amount * price
-          }]`
+          content: `[User has viewed the projects.]`
         }
       ]
     })
   })
 
   return {
-    purchasingUI: purchasing.value,
+    loadingUI: loading.value,
+    newMessage: {
+      id: nanoid(),
+      display: systemMessage.value
+    }
+  }
+}
+
+async function showExperience() {
+  'use server'
+
+  const aiState = getMutableAIState<typeof AI>()
+
+  const loading = createStreamableUI(
+    <div className="inline-flex items-start gap-1 md:items-center">
+      {spinner}
+      <p className="mb-2">
+        Loading experience...
+      </p>
+    </div>
+  )
+
+  const systemMessage = createStreamableUI(null)
+
+  runAsyncFnWithoutBlocking(async () => {
+    await sleep(1000)
+
+    loading.update(
+      <div className="inline-flex items-start gap-1 md:items-center">
+        {spinner}
+        <p className="mb-2">
+          Loading experience... almost there...
+        </p>
+      </div>
+    )
+
+    await sleep(1000)
+
+    const experiences = [
+      { title: 'Experience 1', description: 'Description of experience 1' },
+      { title: 'Experience 2', description: 'Description of experience 2' },
+      // Add more experiences here
+    ]
+
+    loading.done(
+      <div>
+        <p className="mb-2">
+          Here is my professional experience.
+        </p>
+      </div>
+    )
+
+    systemMessage.done(
+      <SystemMessage>
+        I have loaded my experience.
+      </SystemMessage>
+    )
+
+    aiState.done({
+      ...aiState.get(),
+      messages: [
+        ...aiState.get().messages,
+        {
+          id: nanoid(),
+          role: 'system',
+          content: `[User has viewed the experience.]`
+        }
+      ]
+    })
+  })
+
+  return {
+    loadingUI: loading.value,
     newMessage: {
       id: nanoid(),
       display: systemMessage.value
@@ -133,23 +207,18 @@ async function submitUserMessage(content: string) {
     `
     You are a conversation bot to talk about a software engineer, Finn Bergquist, and why you should hire him.
     He is a software engineer with experience in full-stack development, and he is passionate about building products that make a difference.
-    `,
 
-    //`
-    // You are a stock trading conversation bot and you can help users buy stocks, step by step.
-    // You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
+    Messages inside [] means that it's a UI element or a user event. For example:
+    - "[Project: A Cool Project]" means that an interface of a project is shown to the user.
+    - "[Experience: Software Engineer at XYZ]" means that an interface of an experience is shown to the user.
     
-    // Messages inside [] means that it's a UI element or a user event. For example:
-    // - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
-    // - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
+    If the user requests projects from Finn, call \`show_projects_ui\` to show the projects UI.
+    If you want to show Finn's work experience, call \`list_experiences\`.
+    If you want to show events, call \`get_events\`.
+    If the user wants to do something not related to projects or experience, respond that you are a demo and cannot do that.
     
-    // If the user requests purchasing a stock, call \`show_stock_purchase_ui\` to show the purchase UI.
-    // If the user just wants the price, call \`show_stock_price\` to show the price.
-    // If you want to show trending stocks, call \`list_stocks\`.
-    // If you want to show events, call \`get_events\`.
-    // If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
+    Besides that, you can also chat with users and do some calculations if needed.`,
     
-    // Besides that, you can also chat with users and do some calculations if needed.`,
     messages: [
       ...aiState.get().messages.map((message: any) => ({
         role: message.role,
@@ -183,21 +252,20 @@ async function submitUserMessage(content: string) {
       return textNode
     },
     tools: {
-      listStocks: {
-        description: 'List three imaginary stocks that are trending.',
+      listProjects: {
+        description: 'List my projects and show them to the user.',
         parameters: z.object({
-          stocks: z.array(
+          projects: z.array(
             z.object({
-              symbol: z.string().describe('The symbol of the stock'),
-              price: z.number().describe('The price of the stock'),
-              delta: z.number().describe('The change in price of the stock')
+              title: z.string().describe('The title of the project'),
+              description: z.string().describe('The description of the project')
             })
           )
         }),
-        generate: async function* ({ stocks }) {
+        generate: async function* ({ projects }) {
           yield (
             <BotCard>
-              <StocksSkeleton />
+              <ProjectsSkeleton />
             </BotCard>
           )
 
@@ -215,9 +283,9 @@ async function submitUserMessage(content: string) {
                 content: [
                   {
                     type: 'tool-call',
-                    toolName: 'listStocks',
+                    toolName: 'listProjects',
                     toolCallId,
-                    args: { stocks }
+                    args: { projects }
                   }
                 ]
               },
@@ -227,9 +295,9 @@ async function submitUserMessage(content: string) {
                 content: [
                   {
                     type: 'tool-result',
-                    toolName: 'listStocks',
+                    toolName: 'listProjects',
                     toolCallId,
-                    result: stocks
+                    result: projects
                   }
                 ]
               }
@@ -238,204 +306,26 @@ async function submitUserMessage(content: string) {
 
           return (
             <BotCard>
-              <Stocks props={stocks} />
+              <Projects props={projects} />
             </BotCard>
           )
         }
       },
-      showStockPrice: {
+      showExperience: {
         description:
-          'Get the current stock price of a given stock or currency. Use this to show the price to the user.',
+          'Show my professional experience.',
         parameters: z.object({
-          symbol: z
-            .string()
-            .describe(
-              'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
-            ),
-          price: z.number().describe('The price of the stock.'),
-          delta: z.number().describe('The change in price of the stock')
-        }),
-        generate: async function* ({ symbol, price, delta }) {
-          yield (
-            <BotCard>
-              <StockSkeleton />
-            </BotCard>
-          )
-
-          await sleep(1000)
-
-          const toolCallId = nanoid()
-
-          aiState.done({
-            ...aiState.get(),
-            messages: [
-              ...aiState.get().messages,
-              {
-                id: nanoid(),
-                role: 'assistant',
-                content: [
-                  {
-                    type: 'tool-call',
-                    toolName: 'showStockPrice',
-                    toolCallId,
-                    args: { symbol, price, delta }
-                  }
-                ]
-              },
-              {
-                id: nanoid(),
-                role: 'tool',
-                content: [
-                  {
-                    type: 'tool-result',
-                    toolName: 'showStockPrice',
-                    toolCallId,
-                    result: { symbol, price, delta }
-                  }
-                ]
-              }
-            ]
-          })
-
-          return (
-            <BotCard>
-              <Stock props={{ symbol, price, delta }} />
-            </BotCard>
-          )
-        }
-      },
-      showStockPurchase: {
-        description:
-          'Show price and the UI to purchase a stock or currency. Use this if the user wants to purchase a stock or currency.',
-        parameters: z.object({
-          symbol: z
-            .string()
-            .describe(
-              'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
-            ),
-          price: z.number().describe('The price of the stock.'),
-          numberOfShares: z
-            .number()
-            .optional()
-            .describe(
-              'The **number of shares** for a stock or currency to purchase. Can be optional if the user did not specify it.'
-            )
-        }),
-        generate: async function* ({ symbol, price, numberOfShares = 100 }) {
-          const toolCallId = nanoid()
-
-          if (numberOfShares <= 0 || numberOfShares > 1000) {
-            aiState.done({
-              ...aiState.get(),
-              messages: [
-                ...aiState.get().messages,
-                {
-                  id: nanoid(),
-                  role: 'assistant',
-                  content: [
-                    {
-                      type: 'tool-call',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      args: { symbol, price, numberOfShares }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'tool',
-                  content: [
-                    {
-                      type: 'tool-result',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      result: {
-                        symbol,
-                        price,
-                        numberOfShares,
-                        status: 'expired'
-                      }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'system',
-                  content: `[User has selected an invalid amount]`
-                }
-              ]
-            })
-
-            return <BotMessage content={'Invalid amount'} />
-          } else {
-            aiState.done({
-              ...aiState.get(),
-              messages: [
-                ...aiState.get().messages,
-                {
-                  id: nanoid(),
-                  role: 'assistant',
-                  content: [
-                    {
-                      type: 'tool-call',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      args: { symbol, price, numberOfShares }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'tool',
-                  content: [
-                    {
-                      type: 'tool-result',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      result: {
-                        symbol,
-                        price,
-                        numberOfShares
-                      }
-                    }
-                  ]
-                }
-              ]
-            })
-
-            return (
-              <BotCard>
-                <Purchase
-                  props={{
-                    numberOfShares,
-                    symbol,
-                    price: +price,
-                    status: 'requires_action'
-                  }}
-                />
-              </BotCard>
-            )
-          }
-        }
-      },
-      getEvents: {
-        description:
-          'List funny imaginary events between user highlighted dates that describe stock activity.',
-        parameters: z.object({
-          events: z.array(
+          experiences: z.array(
             z.object({
-              date: z
-                .string()
-                .describe('The date of the event, in ISO-8601 format'),
-              headline: z.string().describe('The headline of the event'),
-              description: z.string().describe('The description of the event')
+              title: z.string().describe('The title of the experience'),
+              description: z.string().describe('The description of the experience')
             })
           )
         }),
-        generate: async function* ({ events }) {
+        generate: async function* ({ experiences }) {
           yield (
             <BotCard>
-              <EventsSkeleton />
+              <ExperienceSkeleton />
             </BotCard>
           )
 
@@ -453,9 +343,9 @@ async function submitUserMessage(content: string) {
                 content: [
                   {
                     type: 'tool-call',
-                    toolName: 'getEvents',
+                    toolName: 'showExperience',
                     toolCallId,
-                    args: { events }
+                    args: { experiences }
                   }
                 ]
               },
@@ -465,9 +355,9 @@ async function submitUserMessage(content: string) {
                 content: [
                   {
                     type: 'tool-result',
-                    toolName: 'getEvents',
+                    toolName: 'showExperience',
                     toolCallId,
-                    result: events
+                    result: experiences
                   }
                 ]
               }
@@ -476,7 +366,7 @@ async function submitUserMessage(content: string) {
 
           return (
             <BotCard>
-              <Events props={events} />
+              <Experiences props={experiences} />
             </BotCard>
           )
         }
@@ -485,111 +375,25 @@ async function submitUserMessage(content: string) {
   })
 
   return {
-    id: nanoid(),
-    display: result.value
+    newMessage: {
+      id: nanoid(),
+      display: result
+    }
   }
 }
 
-export type AIState = {
-  chatId: string
-  messages: Message[]
-}
-
-export type UIState = {
-  id: string
-  display: React.ReactNode
-}[]
-
-export const AI = createAI<AIState, UIState>({
-  actions: {
-    submitUserMessage,
-    confirmPurchase
-  },
-  initialUIState: [],
-  initialAIState: { chatId: nanoid(), messages: [] },
-  onGetUIState: async () => {
-    'use server'
-
-    const session = await auth()
-
-    if (session && session.user) {
-      const aiState = getAIState() as Chat
-
-      if (aiState) {
-        const uiState = getUIStateFromAIState(aiState)
-        return uiState
-      }
-    } else {
-      return
+const AI = createAI({
+  messages: [
+    {
+      id: nanoid(),
+      role: 'system',
+      content: `Welcome! I'm Finn Bergquist's portfolio bot. Ask me anything about Finn's projects or experience.`
     }
-  },
-  onSetAIState: async ({ state }) => {
-    'use server'
-
-    const session = await auth()
-
-    if (session && session.user) {
-      const { chatId, messages } = state
-
-      const createdAt = new Date()
-      const userId = session.user.id as string
-      const path = `/chat/${chatId}`
-
-      const firstMessageContent = messages[0].content as string
-      const title = firstMessageContent.substring(0, 100)
-
-      const chat: Chat = {
-        id: chatId,
-        title,
-        userId,
-        createdAt,
-        messages,
-        path
-      }
-
-      await saveChat(chat)
-    } else {
-      return
-    }
+  ],
+  tools: {
+    showProjects,
+    showExperience
   }
 })
 
-export const getUIStateFromAIState = (aiState: Chat) => {
-  return aiState.messages
-    .filter(message => message.role !== 'system')
-    .map((message, index) => ({
-      id: `${aiState.chatId}-${index}`,
-      display:
-        message.role === 'tool' ? (
-          message.content.map(tool => {
-            return tool.toolName === 'listStocks' ? (
-              <BotCard>
-                {/* TODO: Infer types based on the tool result*/}
-                {/* @ts-expect-error */}
-                <Stocks props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'showStockPrice' ? (
-              <BotCard>
-                {/* @ts-expect-error */}
-                <Stock props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'showStockPurchase' ? (
-              <BotCard>
-                {/* @ts-expect-error */}
-                <Purchase props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'getEvents' ? (
-              <BotCard>
-                {/* @ts-expect-error */}
-                <Events props={tool.result} />
-              </BotCard>
-            ) : null
-          })
-        ) : message.role === 'user' ? (
-          <UserMessage>{message.content as string}</UserMessage>
-        ) : message.role === 'assistant' &&
-          typeof message.content === 'string' ? (
-          <BotMessage content={message.content} />
-        ) : null
-    }))
-}
+export default AI
