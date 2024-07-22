@@ -36,24 +36,24 @@ export function ChatPanel({
 
   const exampleMessages = [
     {
-      heading: 'What are the',
-      subheading: 'trending memecoins today?',
-      message: `What are the trending memecoins today?`
+      heading: 'Tell me about Finn',
+      subheading: 'Is he a good fit for my company?',
+      message: `Tell me about Finn Bergquist. Is he a good fit for my company?`
     },
     {
-      heading: 'What is the price of',
-      subheading: '$DOGE right now?',
-      message: 'What is the price of $DOGE right now?'
+      heading: 'Would Finn be a good fit for my company?',
+      subheading: 'Tell me about his work experience',
+      message: 'Would Finn be a good fit for my company? Tell me about his experience'
     },
     {
-      heading: 'I would like to buy',
-      subheading: '42 $DOGE',
-      message: `I would like to buy 42 $DOGE`
+      heading: `Show me some of Finn's projects?`,
+      subheading: 'What technologies is he familiar with?',
+      message: `Show me some of Finn's projects`
     },
     {
-      heading: 'What are some',
-      subheading: `recent events about $DOGE?`,
-      message: `What are some recent events about $DOGE?`
+      heading: 'What else is he interested in?',
+      subheading: `Does he have any hobbies other than coding?`,
+      message: `What work experience does Finn have? Does he have any hobbies other than coding?`
     }
   ]
 

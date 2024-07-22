@@ -101,7 +101,7 @@ export function BotCard({
           !showAvatar && 'invisible'
         )}
       >
-        <IconOpenAI />
+        <IconOpenAI />//CHange TO my own icon
       </div>
       <div className="ml-4 flex-1 pl-2">{children}</div>
     </div>
