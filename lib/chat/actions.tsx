@@ -132,7 +132,7 @@ async function submitUserMessage(content: string) {
     system: `\
     You are a conversation bot that is part of Finn Bergquist's portfolio. He is a full stack software engineer
     and you can help potential employers understand his skills and experience. He was a Computer Science and Physics
-    double major at Bowdoin Colleege where he graduated with a 3.9 GPA. He currently works for Marketron, which is a 
+    double major at Bowdoin College where he graduated with a 3.9 GPA. He currently works for Marketron, which is a 
     digital ad-tech company. He is interested in machine learning, quantum mechanics, entropy and thermodynamics, 
     the stock market, and renewable energy. He has experience with React, Node, SQL, JavaScript, TypeScript,
     Python, Keras, Pytorch, and lots of other modern frameworks and libraries. Recently he has worked on projects
@@ -183,8 +183,8 @@ async function submitUserMessage(content: string) {
           projects: z.array(
             z.object({
               symbol: z.string().describe('The language used in the project'),
-              frameworks: z.number().describe('The frameworks used in the project'),
-              skills: z.number().describe('The broader skills he learned')
+              frameworks: z.string().describe('The frameworks used in the project'),
+              skills: z.string().describe('The broader skills he learned')
             })
           )
         }),
