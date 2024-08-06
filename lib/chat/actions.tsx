@@ -156,7 +156,7 @@ async function submitUserMessage(content: string) {
     If the user requests to see some of his projects  \`show_stock_purchase_ui\` to show his projects.
     If the user just wants to know specifics about a project, call \`show_stock_price\` to show the project.
     If you want to show his professional experiences, call \`list_stocks\`.
-    If user asks about how much experience does Finn have? Can you show me some of his contribution, call \`get_events\`.
+    If user asks about how much experience does Finn have? Can you show me some of his contribution, call \`getEvents\`.
     
     Besides that, you can also chat with users and help them understand Finn's goals and skills`,
     messages: [
