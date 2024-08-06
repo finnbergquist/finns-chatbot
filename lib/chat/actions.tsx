@@ -254,17 +254,15 @@ async function submitUserMessage(content: string) {
       },
       showStockPrice: {
         description:
-          'Get the current stock price of a given stock or currency. Use this to show the price to the user.',
+          'Show a specific project Readme from Finn Bergquist Github.',
         parameters: z.object({
           symbol: z
             .string()
             .describe(
-              'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
+              'The name or symbol of the project'
             ),
-          price: z.number().describe('The price of the stock.'),
-          delta: z.number().describe('The change in price of the stock')
         }),
-        generate: async function* ({ symbol, price, delta }) {
+        generate: async function* ({ symbol}) {
           yield (
             <BotCard>
               <StockSkeleton />
@@ -287,7 +285,7 @@ async function submitUserMessage(content: string) {
                     type: 'tool-call',
                     toolName: 'showStockPrice',
                     toolCallId,
-                    args: { symbol, price, delta }
+                    args: { symbol}
                   }
                 ]
               },
@@ -299,7 +297,7 @@ async function submitUserMessage(content: string) {
                     type: 'tool-result',
                     toolName: 'showStockPrice',
                     toolCallId,
-                    result: { symbol, price, delta }
+                    result: { symbol}
                   }
                 ]
               }
@@ -308,7 +306,7 @@ async function submitUserMessage(content: string) {
 
           return (
             <BotCard>
-              <Stock props={{ symbol, price, delta }} />
+              <Stock props={{symbol}}/>
             </BotCard>
           )
         }

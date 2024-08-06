@@ -6,8 +6,7 @@ import { GitHubReadme } from "react-github-readme-md";
 
 interface Stock {
   symbol: string
-  frameworks: string
-  skills: string
+
 }
 
 export function Stock({ props: { symbol} }: { props: Stock }) {
@@ -16,10 +15,7 @@ export function Stock({ props: { symbol} }: { props: Stock }) {
 
   return (
     <div className="rounded-xl border  p-4 text-green-400">
-
       <GitHubReadme username="finnbergquist" repo={symbol} />
-
-      
     </div>
   )
 }
