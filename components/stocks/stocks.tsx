@@ -1,6 +1,7 @@
 'use client'
 
 import { useActions, useUIState } from 'ai/rsc'
+import RepoCard from 'react-repo-card'
 
 import type { AI } from '@/lib/chat/actions'
 
@@ -16,24 +17,22 @@ export function Stocks({ props: projects }: { props: Stock[] }) {
 
   return (
     <div>
-      <div className="mb-4 flex flex-col gap-2 overflow-y-scroll pb-4 text-sm sm:flex-row">
+      <div className="mb-4 grid gap-2 pb-4 text-sm sm:grid-cols-3">
         {projects.map(project => (
           <button
             key={project.symbol}
-            className="flex cursor-pointer flex-row gap-2 rounded-lg bg-zinc-800 p-2 text-left hover:bg-zinc-700 sm:w-52"
+            className="flex flex-row gap-2 rounded-lg bg-zinc-800 p-2 text-left"
             onClick={async () => {
               const response = await submitUserMessage(`View ${project.symbol}`)
               setMessages((currentMessages: any) => [...currentMessages, response])
             }}
           >
-            <div
-              className={`text-xl ${
-                project.frameworks ? 'text-green-600' : 'text-red-600'
-              } flex w-11 flex-row justify-center rounded-md bg-white/10 p-2`}
-            >
+            <div className="flex flex-col" style={{ width: "405px" }}>
+              <RepoCard username='finnbergquist' repository={project.symbol} />
+              <div className="p-4 flex flex-col text-center border rounded-lg text-sm text-zinc-500 cursor-pointer hover:bg-zinc-700 mt-2">
+                Show More
+              </div>
             </div>
-            
-            
           </button>
         ))}
       </div>

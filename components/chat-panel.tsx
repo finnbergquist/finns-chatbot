@@ -41,9 +41,9 @@ export function ChatPanel({
       message: `Tell me about Finn Bergquist. Is he a good fit for my company?`
     },
     {
-      heading: 'Would Finn be a good fit for my company?',
-      subheading: 'Tell me about his work experience',
-      message: 'Would Finn be a good fit for my company? Tell me about his experience'
+      heading: 'How much experience does Finn have?',
+      subheading: 'Can you show me some of his contribution data?',
+      message: 'How much experience does Finn have? Can you show me some of his contribution data?'
     },
     {
       heading: `Show me some of Finn's projects?`,

@@ -138,10 +138,25 @@ async function submitUserMessage(content: string) {
     Python, Keras, Pytorch, and lots of other modern frameworks and libraries. Recently he has worked on projects
     building things on top of the OpenAI and Anthropic APIs. 
 
+    Here are the three projects to highlight:
+
+      1. Name: Stock-Trader-Neural-Net
+      A stock market simulator in Python using the Pandas library. This project taught him about the stock market
+
+      2. Name: Portfolio-2
+      A React app that displays his projects. This project taught him about React and Node
+
+      3. Name: AINewsletter
+      A DALL-e Wrapper that generates and edits images. This project taught him about the OpenAI API
+
+      4. Name: Groove-Blocks
+      An educational music toy that teaches music production and theory in an engaging and tactile way.
+
+
     If the user requests to see some of his projects  \`show_stock_purchase_ui\` to show his projects.
     If the user just wants to know specifics about a project, call \`show_stock_price\` to show the project.
     If you want to show his professional experiences, call \`list_stocks\`.
-    If you want to show his academic research or side projects, call \`get_events\`.
+    If user asks about how much experience does Finn have? Can you show me some of his contribution, call \`get_events\`.
     
     Besides that, you can also chat with users and help them understand Finn's goals and skills`,
     messages: [
@@ -178,11 +193,11 @@ async function submitUserMessage(content: string) {
     },
     tools: {
       listStocks: {
-        description: 'List three projects that Finn has worked on.',
+        description: 'List four projects that Finn has worked on.',
         parameters: z.object({
           projects: z.array(
             z.object({
-              symbol: z.string().describe('The language used in the project'),
+              symbol: z.string().describe('The Project Name'),
               frameworks: z.string().describe('The frameworks used in the project'),
               skills: z.string().describe('The broader skills he learned')
             })
@@ -414,7 +429,7 @@ async function submitUserMessage(content: string) {
       },
       getEvents: {
         description:
-          'List funny imaginary events between user highlighted dates that describe stock activity.',
+          'Show github activity from finn in the past year.',
         parameters: z.object({
           events: z.array(
             z.object({

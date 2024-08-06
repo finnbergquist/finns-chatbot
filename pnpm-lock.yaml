@@ -28,8 +28,14 @@ dependencies:
   openai: 4.53.0
   react: 18.3.1
   react-dom: 18.3.1_react@18.3.1
+  react-github-calendar: 4.2.1_react-dom@18.3.1+react@18.3.1
+  react-github-readme-button: 1.2.3_react-dom@18.3.1+react@18.3.1
+  react-github-readme-md: 1.2.2_react-dom@18.3.1+react@18.3.1
+  react-github-repo-card: 0.0.1-beta.1
+  react-github-repos: 0.4.3
   react-intersection-observer: 9.13.0_react-dom@18.3.1+react@18.3.1
   react-markdown: 8.0.7_@types+react@18.3.3+react@18.3.1
+  react-repo-card: 2.0.1_react-dom@18.3.1+react@18.3.1
   react-syntax-highlighter: 15.5.0_react@18.3.1
   react-textarea-autosize: 8.5.3_@types+react@18.3.3+react@18.3.1
   remark-gfm: 3.0.1
@@ -257,6 +263,14 @@ packages:
       node: '>=6.9.0'
     resolution:
       integrity: sha512-5F7SDGs1T72ZczbRwbGO9lQi0NLjQxzl6i4lJxLxfW9U5UluCSyEJeniWvnhl3/euNiqQVbo8zruhsDfid0esA==
+  /@babel/runtime/7.25.0:
+    dependencies:
+      regenerator-runtime: 0.14.1
+    dev: false
+    engines:
+      node: '>=6.9.0'
+    resolution:
+      integrity: sha512-7dRy4DwXwtzBrPbZflqxnvfxLF8kdZXPkhymtDeFoFqE6ldzjQFgYTtYIFARcLEYDrqfBfYcZt1WqFxRoyC9Rw==
   /@eslint-community/eslint-utils/4.4.0_eslint@8.57.0:
     dependencies:
       eslint: 8.57.0
@@ -1266,6 +1280,10 @@ packages:
       tailwindcss: '>=3.0.0 || insiders'
     resolution:
       integrity: sha512-ADGcJ8dX21dVVHIwTRgzrcunY6YY9uSlAHHGVKvkA+vLc5qLwEszvKts40lx7z0qc4clpjclwLeK5rVCV2P/uw==
+  /@types/chroma-js/2.4.4:
+    dev: false
+    resolution:
+      integrity: sha512-/DTccpHTaKomqussrn+ciEvfW4k6NAHzNzs/sts1TCqg333qNxOhy8TNIoQCmbGG3Tl8KdEhkGAssb1n3mTXiQ==
   /@types/d3-scale/4.0.8:
     dependencies:
       '@types/d3-time': 3.0.3
@@ -1300,6 +1318,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-HMwFiRujE5PjrgwHQ25+bsLJgowjGjm5Z8FVSf0N6PwgJrwxH0QxzHYDcKsTfV3wva0vzrpqMTJS2jXPr5BMEQ==
+  /@types/linkify-it/5.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==
   /@types/mdast/3.0.15:
     dependencies:
       '@types/unist': 2.0.10
@@ -1328,6 +1350,10 @@ packages:
       undici-types: 5.26.5
     resolution:
       integrity: sha512-kprQpL8MMeszbz6ojB5/tU8PLN4kesnN8Gjzw349rDlNgsSzg90lAVj3llK99Dh7JON+t9AuscPPFW6mPbTnSA==
+  /@types/prismjs/1.26.4:
+    dev: false
+    resolution:
+      integrity: sha512-rlAnzkW2sZOjbqZ743IHUhFcvzaGbqijwOu8QZnZCjfQzBqFE3s4lOTJEsxikImav9uzz/42I+O7YUs1mWgMlg==
   /@types/prop-types/15.7.12:
     resolution:
       integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==
@@ -1959,6 +1985,10 @@ packages:
       fsevents: 2.3.3
     resolution:
       integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==
+  /chroma-js/2.6.0:
+    dev: false
+    resolution:
+      integrity: sha512-BLHvCB9s8Z1EV4ethr6xnkl/P2YRFOGqfgvuMG/MyCbZPrTA+NeiByY6XvgF0zP4/2deU2CXnWyMa3zu1LqQ3A==
   /class-variance-authority/0.7.0:
     dependencies:
       clsx: 2.0.0
@@ -2302,6 +2332,38 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
+  /dom-serializer/2.0.0:
+    dependencies:
+      domelementtype: 2.3.0
+      domhandler: 5.0.3
+      entities: 4.5.0
+    dev: false
+    resolution:
+      integrity: sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==
+  /domelementtype/2.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==
+  /domhandler/5.0.3:
+    dependencies:
+      domelementtype: 2.3.0
+    dev: false
+    engines:
+      node: '>= 4'
+    resolution:
+      integrity: sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==
+  /dompurify/3.1.6:
+    dev: false
+    resolution:
+      integrity: sha512-cTOAhc36AalkjtBpfG6O8JimdTMWNXjiePT2xQH/ppBGi/4uIpmj8eKyIkMJErXWARyINV/sB38yf8JCLF5pbQ==
+  /domutils/3.1.0:
+    dependencies:
+      dom-serializer: 2.0.0
+      domelementtype: 2.3.0
+      domhandler: 5.0.3
+    dev: false
+    resolution:
+      integrity: sha512-H78uMmQtI2AhgDJjWeQmHwJJ2bLPD3GMmO7Zja/ZZh84wkm+4ut+IUnUdRa8uCGX88DiVx1j6FRe1XfxEgjEZA==
   /dotenv/16.4.5:
     dev: true
     engines:
@@ -2337,6 +2399,12 @@ packages:
       node: '>=10.13.0'
     resolution:
       integrity: sha512-dwDPwZL0dmye8Txp2gzFmA6sxALaSvdRDjPH0viLcKrtlOL3tw62nWWweVD1SdILDTJrbrL6tdWVN58Wo6U3eA==
+  /entities/4.5.0:
+    dev: false
+    engines:
+      node: '>=0.12'
+    resolution:
+      integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
   /es-abstract/1.23.3:
     dependencies:
       array-buffer-byte-length: 1.0.1
@@ -3024,6 +3092,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-ZAqrLlu18NbDdRaHq+AKXzAmqIUPswPWKUchfytdAjiRFnCe5ojG2bstg6mRiZabkKfCoL/e98pbBELIV/YCeA==
+  /github-markdown-css/5.6.1:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-DItLFgHd+s7HQmk63YN4/TdvLeRqk1QP7pPKTTPrDTYoI5x7f/luJWSOZxesmuxBI2srHp8RDyoZd+9WF+WK8Q==
+  /github-slugger/2.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==
   /glob-parent/5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -3192,6 +3270,40 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==
+  /highlight.js/11.10.0:
+    dev: false
+    engines:
+      node: '>=12.0.0'
+    resolution:
+      integrity: sha512-SYVnVFswQER+zu1laSya563s+F8VDGt7o35d4utbamowvUNLLMovFqwCLSocpZTz3MgaSRA1IbqRWZv97dtErQ==
+  /html-dom-parser/5.0.3:
+    dependencies:
+      domhandler: 5.0.3
+      htmlparser2: 9.0.0
+    dev: false
+    resolution:
+      integrity: sha512-slsc6ipw88OUZjAayRs5NTmfOQCwcUa3hNyk6AdsbQxY09H5Lr1Y3CZ4ZlconMKql3Ga6sWg3HMoUzo7KSItaQ==
+  /html-react-parser/4.2.10_react@18.3.1:
+    dependencies:
+      domhandler: 5.0.3
+      html-dom-parser: 5.0.3
+      react: 18.3.1
+      react-property: 2.0.2
+      style-to-js: 1.1.8
+    dev: false
+    peerDependencies:
+      react: 0.14 || 15 || 16 || 17 || 18
+    resolution:
+      integrity: sha512-JyKZVQ+kQ8PdycISwkuLbEEvV/k4hWhU6cb6TT7yGaYwdqA7cPt4VRYXkCZcix2vlQtgDBSMJUmPI2jpNjPGvg==
+  /htmlparser2/9.0.0:
+    dependencies:
+      domelementtype: 2.3.0
+      domhandler: 5.0.3
+      domutils: 3.1.0
+      entities: 4.5.0
+    dev: false
+    resolution:
+      integrity: sha512-uxbSI98wmFT/G4P2zXx4OVx04qWUmyFPrD2/CNepa2Zo3GPNaCaaxElDgwUrwYWkK1nr9fft0Ya8dws8coDLLQ==
   /humanize-ms/1.2.1:
     dependencies:
       ms: 2.1.3
@@ -3235,6 +3347,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
+  /inline-style-parser/0.2.2:
+    dev: false
+    resolution:
+      integrity: sha512-EcKzdTHVe8wFVOGEYXiW9WmJXPjqi1T+234YpJr98RiFYKHV3cdy1+3mkTE+KHTHxFFLH51SfaGOoUdW+v7ViQ==
   /internal-slot/1.0.7:
     dependencies:
       es-errors: 1.3.0
@@ -3664,6 +3780,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
+  /linkify-it/5.0.0:
+    dependencies:
+      uc.micro: 2.1.0
+    dev: false
+    resolution:
+      integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==
   /locate-path/6.0.0:
     dependencies:
       p-locate: 5.0.0
@@ -3713,6 +3835,40 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==
+  /marked-alert/1.2.1_marked@9.1.6:
+    dependencies:
+      marked: 9.1.6
+    dev: false
+    peerDependencies:
+      marked: '>=7.0.0'
+    resolution:
+      integrity: sha512-+ZnoZt2j7hKYRV/XpLhLiXg0qeyr0p2UNUN2NrSoT/7Qt/v9ZIUUTscU/JLu5RXdoXrdpngeOqBjULlbJmCDYg==
+  /marked-gfm-heading-id/3.2.0_marked@9.1.6:
+    dependencies:
+      github-slugger: 2.0.0
+      marked: 9.1.6
+    dev: false
+    peerDependencies:
+      marked: '>=4 <13'
+    resolution:
+      integrity: sha512-Xfxpr5lXLDLY10XqzSCA9l2dDaiabQUgtYM9hw8yunyVsB/xYBRpiic6BOiY/EAJw1ik1eWr1ET1HKOAPZBhXg==
+  /marked-linkify-it/3.1.10_marked@9.1.6:
+    dependencies:
+      '@types/linkify-it': 5.0.0
+      linkify-it: 5.0.0
+      marked: 9.1.6
+    dev: false
+    peerDependencies:
+      marked: '>=4 <14'
+    resolution:
+      integrity: sha512-qPISGex5FZLPdpxCoUhTyoxvvz6pJfseSqU0FOqCFsxeOYAKDbVmYEoGPMCJ2Wyjxf9b8Jexgcw8lgR/jPeUdQ==
+  /marked/9.1.6:
+    dev: false
+    engines:
+      node: '>= 16'
+    hasBin: true
+    resolution:
+      integrity: sha512-jcByLnIFkd5gSXZmjNvS1TlmRhCXZjIzHYlaGkPlLIekG55JDR2Z4va9tZwCiP+/RDERiNhMOFu01xd6O5ct1Q==
   /mdast-util-definitions/5.1.2:
     dependencies:
       '@types/mdast': 3.0.15
@@ -4667,6 +4823,16 @@ packages:
     dev: false
     resolution:
       integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==
+  /prism-react-renderer/2.3.1_react@18.3.1:
+    dependencies:
+      '@types/prismjs': 1.26.4
+      clsx: 2.1.1
+      react: 18.3.1
+    dev: false
+    peerDependencies:
+      react: '>=16.0.0'
+    resolution:
+      integrity: sha512-Rdf+HzBLR7KYjzpJ1rSoxT9ioO85nZngQEoFIhL07XhtJHlCU3SOz0GJ6+qvMyQe0Se+BV3qpe6Yd/NmQF5Juw==
   /prismjs/1.27.0:
     dev: false
     engines:
@@ -4706,6 +4872,20 @@ packages:
     dev: true
     resolution:
       integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+  /react-activity-calendar/2.3.1_react-dom@18.3.1+react@18.3.1:
+    dependencies:
+      '@types/chroma-js': 2.4.4
+      chroma-js: 2.6.0
+      date-fns: 3.6.0
+      prism-react-renderer: 2.3.1_react@18.3.1
+      react: 18.3.1
+      react-dom: 18.3.1_react@18.3.1
+    dev: false
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    resolution:
+      integrity: sha512-QGLlLjaDP4I4h23G5WP3AzG7wIB9tjAeLFNqKbL1T7bvmQiPHCb961koGYDhUS54ddDduJ3Vr9RhEGlV1ZJq6w==
   /react-dom/18.3.1_react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
@@ -4716,6 +4896,65 @@ packages:
       react: ^18.3.1
     resolution:
       integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
+  /react-error-boundary/4.0.13_react@18.3.1:
+    dependencies:
+      '@babel/runtime': 7.25.0
+      react: 18.3.1
+    dev: false
+    peerDependencies:
+      react: '>=16.13.1'
+    resolution:
+      integrity: sha512-b6PwbdSv8XeOSYvjt8LpgpKrZ0yGdtZokYwkwV2wlcZbxgopHX/hgPl5VgpnoVOWd868n1hktM8Qm4b+02MiLQ==
+  /react-github-calendar/4.2.1_react-dom@18.3.1+react@18.3.1:
+    dependencies:
+      react: 18.3.1
+      react-activity-calendar: 2.3.1_react-dom@18.3.1+react@18.3.1
+      react-dom: 18.3.1_react@18.3.1
+      react-error-boundary: 4.0.13_react@18.3.1
+    dev: false
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    resolution:
+      integrity: sha512-W6c7yrQhnpR5KXgskpIhxfahztzX7ihoBImiKOUGwkCmOpJc8b0BZA6JHvbdRj8/ErRQtYHQeb/jsHaJ34BHtA==
+  /react-github-readme-button/1.2.3_react-dom@18.3.1+react@18.3.1:
+    dependencies:
+      dompurify: 3.1.6
+      github-markdown-css: 5.6.1
+      highlight.js: 11.10.0
+      html-react-parser: 4.2.10_react@18.3.1
+      marked: 9.1.6
+      react: 18.3.1
+      react-dom: 18.3.1_react@18.3.1
+    dev: false
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    resolution:
+      integrity: sha512-zSqVAyBRV6e3OQFahAJnSSgz883KI9GRLSdChujEKVXsBvWolLEdQHF4823XrjSXeeV+R+F/QWvSrFdriXj58A==
+  /react-github-readme-md/1.2.2_react-dom@18.3.1+react@18.3.1:
+    dependencies:
+      marked: 9.1.6
+      marked-alert: 1.2.1_marked@9.1.6
+      marked-gfm-heading-id: 3.2.0_marked@9.1.6
+      marked-linkify-it: 3.1.10_marked@9.1.6
+      react: 18.3.1
+      react-dom: 18.3.1_react@18.3.1
+      whatwg-fetch: 3.6.20
+    dev: false
+    peerDependencies:
+      react: '18'
+      react-dom: '18'
+    resolution:
+      integrity: sha512-0FVYaw0dJDml3DQok2XcdR32WnkCCorHe2ln/t1y9J2vjZpf/odLFrGXiK3QBLr/hahDHqmGKMoPkB0T6sKPqw==
+  /react-github-repo-card/0.0.1-beta.1:
+    dev: false
+    resolution:
+      integrity: sha512-m+qOfHLoqB/y0Kkpovd2B9xxE2tE9fMB2NWkEweWv+NeKzxvvyofA4gyVXIkbCeKu25kBY6nHN9hWr4NV0ddYQ==
+  /react-github-repos/0.4.3:
+    dev: false
+    resolution:
+      integrity: sha512-mL/ha+5vj499ZQ7+wcLAroRnWib3vFcbXp9rwOBvN6hbKtzN9J3r+ywsRk3ajvZOm7341W1TypbVojJBQUYA0A==
   /react-intersection-observer/9.13.0_react-dom@18.3.1+react@18.3.1:
     dependencies:
       react: 18.3.1
@@ -4761,6 +5000,10 @@ packages:
       react: '>=16'
     resolution:
       integrity: sha512-bvWbzG4MtOU62XqBx3Xx+zB2raaFFsq4mYiAzfjXJMEz2sixgeAfraA3tvzULF02ZdOMUOKTBFFaZJDDrq+BJQ==
+  /react-property/2.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-+PbtI3VuDV0l6CleQMsx2gtK0JZbZKbpdu5ynr+lbsuvtmgbNcS3VM0tuY2QjFNOcWxvXeHjDpy42RO+4U2rug==
   /react-remove-scroll-bar/2.3.6_@types+react@18.3.3+react@18.3.1:
     dependencies:
       '@types/react': 18.3.3
@@ -4798,6 +5041,17 @@ packages:
         optional: true
     resolution:
       integrity: sha512-FnrTWO4L7/Bhhf3CYBNArEG/yROV0tKmTv7/3h9QCFvH6sndeFf1wPqOcbFVu5VAulS5dV1wGT3GZZ/1GawqiA==
+  /react-repo-card/2.0.1_react-dom@18.3.1+react@18.3.1:
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1_react@18.3.1
+      string-replace-to-array: 2.1.1
+    dev: false
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+    resolution:
+      integrity: sha512-/+y9gcsP0Hi/U7fM4vHOUO8lYhPKo0s6uiJxseIimID2WVQUwMMQ0a0zWDXTR4xRwM9qcMHJbMEqaQ8ytHVPrg==
   /react-style-singleton/2.2.1_@types+react@18.3.3+react@18.3.1:
     dependencies:
       '@types/react': 18.3.3
@@ -5164,6 +5418,10 @@ packages:
       node: '>=10.0.0'
     resolution:
       integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
+  /string-replace-to-array/2.1.1:
+    dev: false
+    resolution:
+      integrity: sha512-i31csTEoIrcB8pusAF72Z0WsF04sbdiH4s0egpcmFj30SgHYdYd1swmZ7Zb1qFryJ5DbZR6z4rSjOzoUcrWUWw==
   /string-width/4.2.3:
     dependencies:
       emoji-regex: 8.0.0
@@ -5278,12 +5536,24 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
+  /style-to-js/1.1.8:
+    dependencies:
+      style-to-object: 1.0.3
+    dev: false
+    resolution:
+      integrity: sha512-bPSspCXkkhETLXnEgDbaoWRWyv3lF2bj32YIc8IElok2IIMHUlZtQUrxYmAkKUNxpluhH0qnKWrmuoXUyTY12g==
   /style-to-object/0.4.4:
     dependencies:
       inline-style-parser: 0.1.1
     dev: false
     resolution:
       integrity: sha512-HYNoHZa2GorYNyqiCaBgsxvcJIn7OHq6inEga+E6Ke3m5JkoqpQbnFssk4jwe+K7AhGa2fcha4wSOf1Kn01dMg==
+  /style-to-object/1.0.3:
+    dependencies:
+      inline-style-parser: 0.2.2
+    dev: false
+    resolution:
+      integrity: sha512-xOpx7S53E0V3DpVsvt7ySvoiumRpfXiC99PUXLqGB3wiAnN9ybEIpuzlZ8LAZg+h1sl9JkEUwtSQXxcCgFqbbg==
   /styled-jsx/5.1.1_react@18.3.1:
     dependencies:
       client-only: 0.0.1
@@ -5541,6 +5811,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
+  /uc.micro/2.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==
   /unbox-primitive/1.0.2:
     dependencies:
       call-bind: 1.0.7
@@ -5761,6 +6035,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
+  /whatwg-fetch/3.6.20:
+    dev: false
+    resolution:
+      integrity: sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==
   /whatwg-url/5.0.0:
     dependencies:
       tr46: 0.0.3
@@ -5943,8 +6221,14 @@ specifiers:
   prettier: ^3.3.2
   react: ^18.3.1
   react-dom: ^18.3.1
+  react-github-calendar: ^4.2.1
+  react-github-readme-button: ^1.2.3
+  react-github-readme-md: ^1.2.2
+  react-github-repo-card: ^0.0.1-beta.1
+  react-github-repos: ^0.4.3
   react-intersection-observer: ^9.10.3
   react-markdown: ^8.0.7
+  react-repo-card: ^2.0.1
   react-syntax-highlighter: ^15.5.0
   react-textarea-autosize: ^8.5.3
   remark-gfm: ^3.0.1

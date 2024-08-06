@@ -18,7 +18,7 @@ export const metadata = {
   },
   description: 'An AI-powered chatbot template built with Next.js and Vercel.',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.png',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png'
   }
