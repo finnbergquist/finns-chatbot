@@ -12,7 +12,13 @@ export function EmptyScreen() {
           Welcome to Finn Bergquist&apos;s AI Chatbot!
         </h1>
         <p className="leading-normal text-muted-foreground">
-          You can ask it about Finn&apos;s experience, projects, interests, or anything else. It&apos;s powered by{' '}
+          You can ask it about Finn&apos;s experience, projects, interests, or anything else.
+        </p>
+        <p className="leading-normal text-muted-foreground">
+          It uses{' '}
+          <ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
+            React Server Components,
+          </ExternalLink>{' '}
           <ExternalLink href="https://sdk.vercel.ai">
             Vercel AI SDK
           </ExternalLink>
@@ -21,12 +27,6 @@ export function EmptyScreen() {
             Vercel KV
           </ExternalLink>
           .
-        </p>
-        <p className="leading-normal text-muted-foreground">
-          It uses{' '}
-          <ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
-            React Server Components
-          </ExternalLink>{' '}
           to combine text with generative portfolio UI as output of the LLM. The UI state
           is synced through the SDK so the model is aware of your interactions
           as they happen.
