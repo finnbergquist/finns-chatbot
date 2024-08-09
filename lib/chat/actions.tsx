@@ -144,7 +144,7 @@ async function submitUserMessage(content: string) {
       A stock market simulator in Python using the Pandas library. This project taught him about the stock market
 
       2. Name: Portfolio-2
-      A React app that displays his projects. This project taught him about React and Node
+      An older portfolio React app that displays his projects. This project taught him about React and Node
 
       3. Name: AINewsletter
       A DALL-e Wrapper that generates and edits images. This project taught him about the OpenAI API
@@ -152,13 +152,60 @@ async function submitUserMessage(content: string) {
       4. Name: Groove-Blocks
       An educational music toy that teaches music production and theory in an engaging and tactile way.
 
+      5. Name: EasyAIEditor
+      A Dall-E Wrapper that generates and edits images. It allows users to create or upload images, and edit
+      them by highlighting specific parts of the image and adding a prompt. The model tought Finn about
+      image streaming and piping, Amazon S3 bucket storage, bearer token authentication, and the OpenAI API.
+      Additionally, Finn built his own two factor authentication system for the app with an email service
+      to send the user a code to verify or reset their email.
 
-    If the user requests to see some of his projects  \`show_stock_purchase_ui\` to show his projects.
-    If the user just wants to know specifics about a project, call \`show_stock_price\` to show the project.
-    If you want to show his professional experiences, call \`list_stocks\`.
+
+    If the user just wants to know specifics about a project, call \`show_stock_price\` to show the project. 
+    If you want to show some of his projects, call \`list_stocks\`. 
     If user asks about how much experience does Finn have? Can you show me some of his contribution, call \`getEvents\`.
-    
-    Besides that, you can also chat with users and help them understand Finn's goals and skills`,
+
+    If user wants to know about other jobs Finn has had, talk about his work experience:
+
+    WORK EXPERIENCE
+
+      Full Stack Software Engineer, Marketron, Denver, CO
+      May 2023 – Present
+
+      Led an offshore development team to integrate digital advertising services for LinkedIn, Facebook, Snapchat, and Google.
+      Developed scalable server-side applications using Node.js, handling complex business logic and API integrations.
+      Designed and implemented cross-platform SQL database schemas and optimized queries for efficient data management.
+      Maintained and enhanced front-end applications with React.js, ensuring high performance and a seamless user experience.
+      Software Engineering Intern, Marketron, Denver, CO
+      May 2022 – May 2023
+
+      Extracted training data from AWS S3 data lakes and developed models using scikit-learn.
+      Created a rules-based agent to collect training data from an internal ReactJS-Flask web application for internal use.
+      Established an automated CI/CD pipeline to streamline updates to the recommendation system.
+      Computer Science Grader: Data Structures, Bowdoin College, Brunswick, ME
+      September 2020 – August 2022
+
+      Nominated by a professor for expertise in Data Structures, Algorithms, and Object-Oriented Programming.
+      Automated grading of student submissions using Python and provided detailed feedback for code optimization.
+      Computer Music Technology Fellow, Bowdoin College Summer Research Fellowship, Brunswick, ME
+      May 2020 – July 2020
+
+      Designed and developed a four-channel musical looping station using Python on a Raspberry Pi.
+      Implemented audio amplification, digital-to-analog conversion, and multi-threading for the final product.
+      Virtual Reality (VR) Lab Assistant, Bowdoin College, Brunswick, ME
+      January 2020 – May 2020
+
+      Assisted in developing a full-stack web application for a 3D simulated tour of Kent Island, NB, Canada.
+      Created 3D models, textures, and shaders for the VR tour using Blender and Unity3D.
+
+    If user wants to know about his hobbies, talk about his other interests:
+
+      - Machine Learning
+      - Quantum Mechanics
+      - Long distance running and bike racing
+      - Surfing
+      - Guitar and music theory
+
+    `,
     messages: [
       ...aiState.get().messages.map((message: any) => ({
         role: message.role,
@@ -193,7 +240,7 @@ async function submitUserMessage(content: string) {
     },
     tools: {
       listStocks: {
-        description: 'List four projects that Finn has worked on.',
+        description: 'List six projects that Finn has worked on.', //List Projects
         parameters: z.object({
           projects: z.array(
             z.object({
@@ -254,7 +301,7 @@ async function submitUserMessage(content: string) {
       },
       showStockPrice: {
         description:
-          'Show a specific project Readme from Finn Bergquist Github.',
+          'Show a specific project Readme from Finn Bergquist Github.', //Show specific Project
         parameters: z.object({
           symbol: z
             .string()
@@ -311,123 +358,9 @@ async function submitUserMessage(content: string) {
           )
         }
       },
-      showStockPurchase: {
-        description:
-          'Show price and the UI to purchase a stock or currency. Use this if the user wants to purchase a stock or currency.',
-        parameters: z.object({
-          symbol: z
-            .string()
-            .describe(
-              'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
-            ),
-          price: z.number().describe('The price of the stock.'),
-          numberOfShares: z
-            .number()
-            .optional()
-            .describe(
-              'The **number of shares** for a stock or currency to purchase. Can be optional if the user did not specify it.'
-            )
-        }),
-        generate: async function* ({ symbol, price, numberOfShares = 100 }) {
-          const toolCallId = nanoid()
-
-          if (numberOfShares <= 0 || numberOfShares > 1000) {
-            aiState.done({
-              ...aiState.get(),
-              messages: [
-                ...aiState.get().messages,
-                {
-                  id: nanoid(),
-                  role: 'assistant',
-                  content: [
-                    {
-                      type: 'tool-call',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      args: { symbol, price, numberOfShares }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'tool',
-                  content: [
-                    {
-                      type: 'tool-result',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      result: {
-                        symbol,
-                        price,
-                        numberOfShares,
-                        status: 'expired'
-                      }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'system',
-                  content: `[User has selected an invalid amount]`
-                }
-              ]
-            })
-
-            return <BotMessage content={'Invalid amount'} />
-          } else {
-            aiState.done({
-              ...aiState.get(),
-              messages: [
-                ...aiState.get().messages,
-                {
-                  id: nanoid(),
-                  role: 'assistant',
-                  content: [
-                    {
-                      type: 'tool-call',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      args: { symbol, price, numberOfShares }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'tool',
-                  content: [
-                    {
-                      type: 'tool-result',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      result: {
-                        symbol,
-                        price,
-                        numberOfShares
-                      }
-                    }
-                  ]
-                }
-              ]
-            })
-
-            return (
-              <BotCard>
-                <Purchase
-                  props={{
-                    numberOfShares,
-                    symbol,
-                    price: +price,
-                    status: 'requires_action'
-                  }}
-                />
-              </BotCard>
-            )
-          }
-        }
-      },
       getEvents: {
         description:
-          'Show github activity from finn in the past year.',
+          'Show github activity from finn in the past year.',//Show github Activity
         parameters: z.object({
           events: z.array(
             z.object({

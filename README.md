@@ -1,10 +1,13 @@
-<a href="https://chat.vercel.ai/">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="https://chat.vercel.ai/opengraph-image.png">
-  <h1 align="center">Next.js AI Chatbot</h1>
-</a>
+
+<h1 align="center">Portfolio AI Chatbot</h1>
+
 
 <p align="center">
-  An open-source AI chatbot app template built with Next.js, the Vercel AI SDK, OpenAI, and Vercel KV.
+  ChatGPT powere AI portfolio chatbot app built with Next.js, the Vercel AI SDK, OpenAI, and Vercel KV.
+</p>
+
+<p align="center">
+  It is capable of answering questions about the portfolio, providing descriptions and components displaying a github repository data, and providing interactive displays of each project.
 </p>
 
 <p align="center">
@@ -43,7 +46,7 @@ You can deploy your own version of the Next.js AI Chatbot to Vercel with one cli
 
 Follow the steps outlined in the [quick start guide](https://vercel.com/docs/storage/vercel-kv/quickstart#create-a-kv-database) provided by Vercel. This guide will assist you in creating and configuring your KV database instance on Vercel, enabling your application to interact with it.
 
-Remember to update your environment variables (`KV_URL`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `KV_REST_API_READ_ONLY_TOKEN`) in the `.env` file with the appropriate credentials provided during the KV database setup.
+Remember to update your environment variables (`KV_URL`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `KV_REST_API_READ_ONLY_TOKEN`, `GITHUB_USERNAME`) in the `.env` file with the appropriate credentials provided during the KV database setup.
 
 ## Running locally
 
@@ -64,7 +67,7 @@ Your app template should now be running on [localhost:3000](http://localhost:300
 
 ## Authors
 
-This library is created by [Vercel](https://vercel.com) and [Next.js](https://nextjs.org) team members, with contributions from:
+This project is adapted from [Vercel](https://vercel.com) and [Next.js](https://nextjs.org) team members, with contributions from:
 
 - Jared Palmer ([@jaredpalmer](https://twitter.com/jaredpalmer)) - [Vercel](https://vercel.com)
 - Shu Ding ([@shuding\_](https://twitter.com/shuding_)) - [Vercel](https://vercel.com)

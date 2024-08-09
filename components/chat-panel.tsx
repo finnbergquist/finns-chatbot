@@ -36,9 +36,9 @@ export function ChatPanel({
 
   const exampleMessages = [
     {
-      heading: 'Tell me about Finn',
-      subheading: 'Is he a good fit for my company?',
-      message: `Tell me about Finn Bergquist. Is he a good fit for my company?`
+      heading: `Show me some of Finn's projects?`,
+      subheading: 'What technologies is he familiar with?',
+      message: `Show me some of Finn's projects`
     },
     {
       heading: 'How much experience does Finn have?',
@@ -46,9 +46,9 @@ export function ChatPanel({
       message: 'How much experience does Finn have? Can you show me some of his contribution data?'
     },
     {
-      heading: `Show me some of Finn's projects?`,
-      subheading: 'What technologies is he familiar with?',
-      message: `Show me some of Finn's projects`
+      heading: 'What other jobs has Finn had?',
+      subheading: 'Please tell me about his work experience.',
+      message: `What other jobs has Finn had? Please tell me about his work experience.`
     },
     {
       heading: 'What else is he interested in?',
