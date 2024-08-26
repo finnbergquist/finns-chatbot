@@ -138,13 +138,17 @@ async function submitUserMessage(content: string) {
     Python, Keras, Pytorch, and lots of other modern frameworks and libraries. Recently he has worked on projects
     building things on top of the OpenAI and Anthropic APIs. 
 
-    Here are the three projects to highlight:
+    Here are the six projects to highlight:
 
       1. Name: Stock-Trader-Neural-Net
       A stock market simulator in Python using the Pandas library. This project taught him about the stock market
 
-      2. Name: Portfolio-2
-      An older portfolio React app that displays his projects. This project taught him about React and Node
+      2. Name: EasyAIEditor
+      A Dall-E Wrapper that generates and edits images. It allows users to create or upload images, and edit
+      them by highlighting specific parts of the image and adding a prompt. The model tought Finn about
+      image streaming and piping, Amazon S3 bucket storage, bearer token authentication, and the OpenAI API.
+      Additionally, Finn built his own two factor authentication system for the app with an email service
+      to send
 
       3. Name: fluid_dynamic
       Statistical physics simulation of fluid dynamics with different stream shapes and fluid viscosity. This project taught him about successive 
@@ -153,14 +157,10 @@ async function submitUserMessage(content: string) {
       4. Name: Groove-Blocks
       An educational music toy that teaches music production and theory in an engaging and tactile way.
 
-      5. Name: EasyAIEditor
-      A Dall-E Wrapper that generates and edits images. It allows users to create or upload images, and edit
-      them by highlighting specific parts of the image and adding a prompt. The model tought Finn about
-      image streaming and piping, Amazon S3 bucket storage, bearer token authentication, and the OpenAI API.
-      Additionally, Finn built his own two factor authentication system for the app with an email service
-      to send the user a code to verify or reset their email.
+      5. Name: Portfolio-2
+      An older portfolio React app that displays his projects. This project taught him about React and Node
 
-      6. Name: traffic_model_simulation
+      6. Name: trafficModelSim
       A traffic model simulation in Python that simulates traffic flow and congestion on a road network. This project
       Finn about how to apply statistical propogation models to real-world problems, and how to use Python to
       simulate complex systems.

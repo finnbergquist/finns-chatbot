@@ -27,7 +27,7 @@ export function Stocks({ props: projects }: { props: Stock[] }) {
               setMessages((currentMessages: any) => [...currentMessages, response])
             }}
           >
-            <div className="flex flex-col" style={{ width: "405px" }}>
+            <div className="flex flex-col" style={{ width: "100%" }}>
               <RepoCard username='finnbergquist' repository={project.symbol} />
               <div className="p-4 flex flex-col text-center border rounded-lg text-sm text-zinc-500 cursor-pointer hover:bg-zinc-700 mt-2">
                 Show More
