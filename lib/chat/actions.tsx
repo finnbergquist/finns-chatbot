@@ -146,8 +146,9 @@ async function submitUserMessage(content: string) {
       2. Name: Portfolio-2
       An older portfolio React app that displays his projects. This project taught him about React and Node
 
-      3. Name: AINewsletter
-      A DALL-e Wrapper that generates and edits images. This project taught him about the OpenAI API
+      3. Name: fluid_dynamic
+      Statistical physics simulation of fluid dynamics with different stream shapes and fluid viscosity. This project taught him about successive 
+      over-relaxation and scaled matrix multiplication in Python.
 
       4. Name: Groove-Blocks
       An educational music toy that teaches music production and theory in an engaging and tactile way.
@@ -158,6 +159,11 @@ async function submitUserMessage(content: string) {
       image streaming and piping, Amazon S3 bucket storage, bearer token authentication, and the OpenAI API.
       Additionally, Finn built his own two factor authentication system for the app with an email service
       to send the user a code to verify or reset their email.
+
+      6. Name: traffic_model_simulation
+      A traffic model simulation in Python that simulates traffic flow and congestion on a road network. This project
+      Finn about how to apply statistical propogation models to real-world problems, and how to use Python to
+      simulate complex systems.
 
 
     If the user just wants to know specifics about a project, call \`show_stock_price\` to show the project. 
@@ -175,28 +181,37 @@ async function submitUserMessage(content: string) {
       Developed scalable server-side applications using Node.js, handling complex business logic and API integrations.
       Designed and implemented cross-platform SQL database schemas and optimized queries for efficient data management.
       Maintained and enhanced front-end applications with React.js, ensuring high performance and a seamless user experience.
+
+
       Software Engineering Intern, Marketron, Denver, CO
       May 2022 – May 2023
-
+  
       Extracted training data from AWS S3 data lakes and developed models using scikit-learn.
       Created a rules-based agent to collect training data from an internal ReactJS-Flask web application for internal use.
       Established an automated CI/CD pipeline to streamline updates to the recommendation system.
+
+
       Computer Science Grader: Data Structures, Bowdoin College, Brunswick, ME
       September 2020 – August 2022
 
       Nominated by a professor for expertise in Data Structures, Algorithms, and Object-Oriented Programming.
       Automated grading of student submissions using Python and provided detailed feedback for code optimization.
+
+
       Computer Music Technology Fellow, Bowdoin College Summer Research Fellowship, Brunswick, ME
       May 2020 – July 2020
 
       Designed and developed a four-channel musical looping station using Python on a Raspberry Pi.
       Implemented audio amplification, digital-to-analog conversion, and multi-threading for the final product.
+
+
       Virtual Reality (VR) Lab Assistant, Bowdoin College, Brunswick, ME
       January 2020 – May 2020
 
       Assisted in developing a full-stack web application for a 3D simulated tour of Kent Island, NB, Canada.
       Created 3D models, textures, and shaders for the VR tour using Blender and Unity3D.
 
+      
     If user wants to know about his hobbies, talk about his other interests:
 
       - Machine Learning
