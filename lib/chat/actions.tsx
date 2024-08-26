@@ -174,46 +174,53 @@ async function submitUserMessage(content: string) {
 
     WORK EXPERIENCE
 
-      Full Stack Software Engineer, Marketron, Denver, CO
+      Full Stack Software Engineer | JS | TS | SQL | AWS , Marketron, Denver, CO
       May 2023 – Present
 
-      Led an offshore development team to integrate digital advertising services for LinkedIn, Facebook, Snapchat, and Google.
-      Developed scalable server-side applications using Node.js, handling complex business logic and API integrations.
-      Designed and implemented cross-platform SQL database schemas and optimized queries for efficient data management.
-      Maintained and enhanced front-end applications with React.js, ensuring high performance and a seamless user experience.
+      Lead offshore dev team integrating LinkedIn, Facebook, Snapchat, Google digital ad services; enhanced ad reach
+
+      Developed scalable Node.js server-side applications and  React.js front-end applications
+
+      Utilized AWS Lambda, API Gateway, and S3 for scalable and efficient cloud-based solutions
+
+      Engineered SQL database schemas to organize universal data storage across features and products
 
 
-      Software Engineering Intern, Marketron, Denver, CO
+      Machine Learning Software Engineering Intern | JS | Python | SQL, Marketron, Denver, CO
       May 2022 – May 2023
-  
-      Extracted training data from AWS S3 data lakes and developed models using scikit-learn.
-      Created a rules-based agent to collect training data from an internal ReactJS-Flask web application for internal use.
-      Established an automated CI/CD pipeline to streamline updates to the recommendation system.
+      
+      Collected and optimized training data from Snowflake data lakes,  identifying data gaps for improved model accuracy
+
+      Developed scikit-learn models, trained and deployed with AWS SageMaker, boosting ad-campaign performance prediction accuracy.
+
+      Designed a rules-based agent with an internal rule creation console app, built using Flask backend and React.js frontend, allowing company admins to add guardrails to prediction output.
+
+      Implemented CI/CD pipeline to the recommendation engine, ensuring seamless model updates and improvements.
 
 
-      Computer Science Grader: Data Structures, Bowdoin College, Brunswick, ME
+      Computer Science Grader: Data Structures | Java, Bowdoin College, Brunswick, ME
       September 2020 – August 2022
 
-      Nominated by a professor for expertise in Data Structures, Algorithms, and Object-Oriented Programming.
-      Automated grading of student submissions using Python and provided detailed feedback for code optimization.
+      Selected by professor for expertise in Data Structures, Algorithms, and Object-Oriented Programming
+
+      Created Python scripts to automate code submission performance and correctness
 
 
-      Computer Music Technology Fellow, Bowdoin College Summer Research Fellowship, Brunswick, ME
+      Computer Music Technology Fellow | Python | c++ , Bowdoin College Summer Research Fellowship, Brunswick, ME
       May 2020 – July 2020
 
-      Designed and developed a four-channel musical looping station using Python on a Raspberry Pi.
-      Implemented audio amplification, digital-to-analog conversion, and multi-threading for the final product.
+      Designed, developed, and tested a four-channel musical looping station
+
+      Delivered final product, running Python on Raspberry Pi, with audio amplification, digital-analog conversion, multi-threading, and my own circuit schematics.
 
 
-      Virtual Reality (VR) Lab Assistant, Bowdoin College, Brunswick, ME
+      Virtual Reality (VR) Lab Assistant | Python | Unity, Bowdoin College, Brunswick, ME
       January 2020 – May 2020
 
-      Assisted in developing a full-stack web application for a 3D simulated tour of Kent Island, NB, Canada.
-      Created 3D models, textures, and shaders for the VR tour using Blender and Unity3D.
+      Contributed to project, building full-stack web application to embed a 3D simulated tour of Kent Island, NB, Canada
 
       
-    If user wants to know about his hobbies, talk about his other interests:
-
+    If user wants to know about what else is he interested in or soes he have any hobbies other than coding?:
       - Machine Learning
       - Quantum Mechanics
       - Long distance running and bike racing

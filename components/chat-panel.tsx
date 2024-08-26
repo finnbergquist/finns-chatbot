@@ -53,7 +53,7 @@ export function ChatPanel({
     {
       heading: 'What else is he interested in?',
       subheading: `Does he have any hobbies other than coding?`,
-      message: `What work experience does Finn have? Does he have any hobbies other than coding?`
+      message: `What else is he interested in? Does he have any hobbies other than coding?`
     }
   ]
 
