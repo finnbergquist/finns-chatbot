@@ -214,7 +214,7 @@ async function submitUserMessage(content: string) {
       Delivered final product, running Python on Raspberry Pi, with audio amplification, digital-analog conversion, multi-threading, and my own circuit schematics.
 
 
-      Virtual Reality (VR) Lab Assistant | Python | Unity, Bowdoin College, Brunswick, ME
+      Virtual Reality (VR) Lab Researcher | Python | Unity, Bowdoin College, Brunswick, ME
       January 2020 – May 2020
 
       Contributed to project, building full-stack web application to embed a 3D simulated tour of Kent Island, NB, Canada

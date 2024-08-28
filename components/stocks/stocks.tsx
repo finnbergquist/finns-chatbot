@@ -37,7 +37,7 @@ export function Stocks({ props: projects }: { props: Stock[] }) {
         ))}
       </div>
       <div className="p-4 text-center text-sm text-zinc-500">
-        Note: Finn is the man
+        Note: I promise Finn is a nice guy!
       </div>
     </div>
   )
