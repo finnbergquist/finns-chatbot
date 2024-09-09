@@ -4,7 +4,7 @@ An AI-powered portfolio chatbot built with Next.js, OpenAI, and GitHub integrati
 
 ## Overview
 
-This project is a fork of the [Vercel AI Chatbot](https://github.com/vercel-labs/ai-chatbot), enhanced with GitHub integration to showcase projects, display READMEs, and visualize GitHub activity. It combines the power of AI-driven conversations with real-time GitHub data to create an interactive portfolio experience.
+This project is a fork of the [Vercel AI Chatbot](https://github.com/vercel-labs/ai-chatbot), enhanced with GitHub integration to showcase projects, display READMEs, and visualize GitHub activity. It uses ai and ui state streaming to render ui components while remaining aware of the conversation and currently displayed github information.
 
 ## Features
 
@@ -32,22 +32,24 @@ This project is a fork of the [Vercel AI Chatbot](https://github.com/vercel-labs
 
 Displays repository information using `react-repo-card`:
 
-typescript
+```typescript
 import { RepoCard } from 'react-repo-card';
 export function GitHubRepoCard({ username, repository }) {
 return <RepoCard username={username} repository={repository} />;
 }
+```
 
 ### GitHubReadme
 
 Fetches and renders README files using `react-github-readme-md`:
 
-typescript
+```typescript
 import { GitHubReadme as GHReadme } from 'react-github-readme-md';
 
 export function GitHubReadme({ username, repo }) {
   return <GHReadme username={username} repo={repo} />;
 }
+```
 
 ### GitHubActivityCalendar
 
@@ -193,6 +195,8 @@ export const actions = {
 }
 ```
 
+This file can be modified to display other things, and also provide background/prompt engineering on something else!
+
 ## Getting Started
 
 1. Clone the repository:
@@ -204,10 +208,10 @@ git clone https://github.com/your-username/portfolio-ai-chatbot.git
 2. Install dependencies:
 
 ```bash
-npm install
+pnpm install
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 3. Set up environment variables:
@@ -215,7 +219,8 @@ npm run dev
 Create a `.env.local` file with the following:
 
 ```bash     
-NEXT_PUBLIC_GITHUB_TOKEN=<your-github-token>
+NEXT_PUBLIC_GITHUB_USERNAME=<your-github-username>
+OPENAI_API_KEY=<api-key>
 ```
 
 4. Start the development server:
