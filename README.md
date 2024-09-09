@@ -34,8 +34,9 @@ Displays repository information using `react-repo-card`:
 
 ```typescript
 import { RepoCard } from 'react-repo-card';
+
 export function GitHubRepoCard({ username, repository }) {
-return <RepoCard username={username} repository={repository} />;
+  return <RepoCard username={username} repository={repository} />;
 }
 ```
 
