@@ -15,7 +15,7 @@ export function Stock({ props: { symbol} }: { props: Stock }) {
 
   return (
     <div className="rounded-xl border  p-4 text-green-400">
-      <GitHubReadme username="finnbergquist" repo={symbol} />
+      <GitHubReadme username={process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'finnbergquist'} repo={symbol} />
     </div>
   )
 }
