@@ -1,74 +1,233 @@
+# AI Portfolio Chatbot
 
-<h1 align="center">Portfolio AI Chatbot</h1>
+An AI-powered portfolio chatbot built with Next.js, OpenAI, and GitHub integration.
 
+## Overview
 
-<p align="center">
-  ChatGPT powere AI portfolio chatbot app built with Next.js, the Vercel AI SDK, OpenAI, and Vercel KV.
-</p>
-
-<p align="center">
-  It is capable of answering questions about the portfolio, providing descriptions and components displaying a github repository data, and providing interactive displays of each project.
-</p>
-
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#model-providers"><strong>Model Providers</strong></a> ·
-  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a> ·
-  <a href="#authors"><strong>Authors</strong></a>
-</p>
-<br/>
+This project is a fork of the [Vercel AI Chatbot](https://github.com/vercel-labs/ai-chatbot), enhanced with GitHub integration to showcase projects, display READMEs, and visualize GitHub activity. It combines the power of AI-driven conversations with real-time GitHub data to create an interactive portfolio experience.
 
 ## Features
 
-- [Next.js](https://nextjs.org) App Router
-- React Server Components (RSCs), Suspense, and Server Actions
-- [Vercel AI SDK](https://sdk.vercel.ai/docs) for streaming chat UI
-- Support for OpenAI (default), Anthropic, Cohere, Hugging Face, or custom AI chat models and/or LangChain
-- [shadcn/ui](https://ui.shadcn.com)
-  - Styling with [Tailwind CSS](https://tailwindcss.com)
-  - [Radix UI](https://radix-ui.com) for headless component primitives
-  - Icons from [Phosphor Icons](https://phosphoricons.com)
-- Chat History, rate limiting, and session storage with [Vercel KV](https://vercel.com/storage/kv)
-- [NextAuth.js](https://github.com/nextauthjs/next-auth) for authentication
+- AI-powered chat interface using OpenAI's GPT model
+- Real-time streaming of AI responses
+- GitHub integration:
+  - Display of repository cards
+  - Fetching and rendering of GitHub READMEs
+  - Visualization of GitHub contribution activity
+- Dynamic project listing with detailed information
+- Seamless integration of GitHub data with AI-generated responses
 
-## Model Providers
+## Tech Stack
 
-This template ships with OpenAI `gpt-3.5-turbo` as the default. However, thanks to the [Vercel AI SDK](https://sdk.vercel.ai/docs), you can switch LLM providers to [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), [Hugging Face](https://huggingface.co), or using [LangChain](https://js.langchain.com) with just a few lines of code.
+- [Next.js](https://nextjs.org/)
+- [Vercel AI SDK](https://sdk.vercel.ai/docs)
+- [OpenAI API](https://openai.com/api/)
+- [Vercel KV](https://vercel.com/storage/kv)
+- [TailwindCSS](https://tailwindcss.com/)
+- [GitHub API](https://docs.github.com/en/rest)
 
-## Deploy Your Own
+## GitHub Components
 
-You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
+### GitHubRepoCard
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=Next.js+Chat&demo-description=A+full-featured%2C+hackable+Next.js+AI+chatbot+built+by+Vercel+Labs&demo-url=https%3A%2F%2Fchat.vercel.ai%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4aVPvWuTmBvzM5cEdRdqeW%2F4234f9baf160f68ffb385a43c3527645%2FCleanShot_2023-06-16_at_17.09.21.png&project-name=Next.js+Chat&repository-name=nextjs-chat&repository-url=https%3A%2F%2Fgithub.com%2Fvercel-labs%2Fai-chatbot&from=templates&skippable-integrations=1&env=OPENAI_API_KEY%2CAUTH_SECRET&envDescription=How+to+get+these+env+vars&envLink=https%3A%2F%2Fgithub.com%2Fvercel-labs%2Fai-chatbot%2Fblob%2Fmain%2F.env.example&teamCreateStatus=hidden&stores=[{"type":"kv"}])
+Displays repository information using `react-repo-card`:
 
-## Creating a KV Database Instance
+typescript
+import { RepoCard } from 'react-repo-card';
+export function GitHubRepoCard({ username, repository }) {
+return <RepoCard username={username} repository={repository} />;
+}
 
-Follow the steps outlined in the [quick start guide](https://vercel.com/docs/storage/vercel-kv/quickstart#create-a-kv-database) provided by Vercel. This guide will assist you in creating and configuring your KV database instance on Vercel, enabling your application to interact with it.
+### GitHubReadme
 
-Remember to update your environment variables (`KV_URL`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `KV_REST_API_READ_ONLY_TOKEN`, `GITHUB_USERNAME`) in the `.env` file with the appropriate credentials provided during the KV database setup.
+Fetches and renders README files using `react-github-readme-md`:
 
-## Running locally
+typescript
+import { GitHubReadme as GHReadme } from 'react-github-readme-md';
 
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
+export function GitHubReadme({ username, repo }) {
+  return <GHReadme username={username} repo={repo} />;
+}
 
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various OpenAI and authentication provider accounts.
+### GitHubActivityCalendar
 
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
+Visualizes GitHub contributions using `react-github-calendar`:
 
-```bash
-pnpm install
-pnpm dev
+```typescript
+import GitHubCalendar from 'react-github-calendar';
+
+export function GitHubActivityCalendar({ username }) {
+  return (
+    <div style={{ width: '950px', transform: 'scale(0.75)', transformOrigin: 'top left' }}>
+      <GitHubCalendar username={username} />
+    </div>
+  );
+}
 ```
 
-Your app template should now be running on [localhost:3000](http://localhost:3000/).
+## UI State Management and Streaming
 
-## Authors
+The `actions.ts` file manages the UI state and streams the AI responses. Here's a snippet of how it integrates GitHub data:
 
-This project is adapted from [Vercel](https://vercel.com) and [Next.js](https://nextjs.org) team members, with contributions from:
+```typescript
+export const actions = {
+  // ... other actions ...
 
-- Jared Palmer ([@jaredpalmer](https://twitter.com/jaredpalmer)) - [Vercel](https://vercel.com)
-- Shu Ding ([@shuding\_](https://twitter.com/shuding_)) - [Vercel](https://vercel.com)
-- shadcn ([@shadcn](https://twitter.com/shadcn)) - [Vercel](https://vercel.com)
+  listProjects: {
+    description: 'List six projects that the user has worked on.',
+    parameters: z.object({
+      projects: z.array(
+        z.object({
+          symbol: z.string().describe('The Project Name'),
+          frameworks: z.string().describe('The frameworks used in the project'),
+          skills: z.string().describe('The broader skills learned')
+        })
+      )
+    }),
+    generate: async function* ({ projects }) {
+      yield (
+        <BotCard>
+          <StocksSkeleton />
+        </BotCard>
+      )
+
+      await sleep(1000)
+
+      const toolCallId = nanoid()
+
+      aiState.done({
+        ...aiState.get(),
+        messages: [
+          ...aiState.get().messages,
+          {
+            id: nanoid(),
+            role: 'assistant',
+            content: [
+              {
+                type: 'tool-call',
+                toolName: 'listProjects',
+                toolCallId,
+                args: { projects }
+              }
+            ]
+          },
+          {
+            id: nanoid(),
+            role: 'tool',
+            content: [
+              {
+                type: 'tool-result',
+                toolName: 'listProjects',
+                toolCallId,
+                result: projects
+              }
+            ]
+          }
+        ]
+      })
+
+      return (
+        <BotCard>
+          <Stocks props={projects} />
+        </BotCard>
+      )
+    }
+  },
+
+  showProjectReadme: {
+    description: 'Show a specific project README from the user\'s GitHub.',
+    parameters: z.object({
+      symbol: z.string().describe('The name or symbol of the project'),
+    }),
+    generate: async function* ({ symbol }) {
+      yield (
+        <BotCard>
+          <StockSkeleton />
+        </BotCard>
+      )
+
+      await sleep(1000)
+
+      const toolCallId = nanoid()
+
+      aiState.done({
+        ...aiState.get(),
+        messages: [
+          ...aiState.get().messages,
+          {
+            id: nanoid(),
+            role: 'assistant',
+            content: [
+              {
+                type: 'tool-call',
+                toolName: 'showProjectReadme',
+                toolCallId,
+                args: { symbol }
+              }
+            ]
+          },
+          {
+            id: nanoid(),
+            role: 'tool',
+            content: [
+              {
+                type: 'tool-result',
+                toolName: 'showProjectReadme',
+                toolCallId,
+                result: { symbol }
+              }
+            ]
+          }
+        ]
+      })
+
+      return (
+        <BotCard>
+          <GitHubReadme username={process.env.GITHUB_USERNAME} repo={symbol} />
+        </BotCard>
+      )
+    }
+  },
+
+  // ... other actions ...
+}
+```
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/portfolio-ai-chatbot.git
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+
+```bash
+npm run dev
+```
+
+3. Set up environment variables:
+
+Create a `.env.local` file with the following:
+
+```bash     
+NEXT_PUBLIC_GITHUB_TOKEN=<your-github-token>
+```
+
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
+## Acknowledgements
+
+- Original [Vercel AI Chatbot](https://github.com/vercel-labs/ai-chatbot) team
+- OpenAI for their powerful language models
+- Vercel for their excellent development tools and hosting
+- GitHub for their API and data
+- react-repo-card, react-github-readme-md, and react-github-calendar for their excellent UI components
