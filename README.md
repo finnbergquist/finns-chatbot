@@ -201,16 +201,16 @@ This file can be modified to display other things, and also provide background/p
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/your-username/portfolio-ai-chatbot.git
+```
+git clone https://github.com/finnbergquist/finns-chatbot.git
 ```
 
 2. Install dependencies:
 
-```bash
+```
 pnpm install
 
-```bash
+```
 pnpm run dev
 ```
 
@@ -218,14 +218,14 @@ pnpm run dev
 
 Create a `.env.local` file with the following:
 
-```bash     
+```     
 NEXT_PUBLIC_GITHUB_USERNAME=<your-github-username>
 OPENAI_API_KEY=<api-key>
 ```
 
 4. Start the development server:
 
-```bash
+```
 npm run dev
 ```
 
