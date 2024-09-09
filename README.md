@@ -210,8 +210,7 @@ git clone https://github.com/finnbergquist/finns-chatbot.git
 ```
 pnpm install
 
-```
-pnpm run dev
+pnpm dev
 ```
 
 3. Set up environment variables:
