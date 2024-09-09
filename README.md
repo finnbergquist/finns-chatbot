@@ -211,7 +211,6 @@ git clone https://github.com/finnbergquist/finns-chatbot.git
 ```
 pnpm install
 
-pnpm dev
 ```
 
 3. Set up environment variables:
@@ -226,7 +225,7 @@ OPENAI_API_KEY=<api-key>
 4. Start the development server:
 
 ```
-npm run dev
+pnpm dev
 ```
 
 ## Acknowledgements
