@@ -1,6 +1,6 @@
 # AI Portfolio Chatbot
 
-An AI-powered portfolio chatbot built with Next.js, OpenAI, and GitHub integration.
+An AI-powered portfolio chatbot built with Next.js, OpenAI, and GitHub API to display experience and projects.
 
 ## Overview
 
