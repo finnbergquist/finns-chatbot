@@ -2,6 +2,9 @@
 
 An AI-powered portfolio chatbot built with Next.js, OpenAI, and GitHub API to display experience and projects.
 
+Check it out here:
+<url> https://finnbergquist.vercel.app/finns-chatbot </url>
+
 ## Overview
 
 This project is a fork of the [Vercel AI Chatbot](https://github.com/vercel-labs/ai-chatbot), enhanced with GitHub integration to showcase projects, display READMEs, and visualize GitHub activity. It uses ai and ui state streaming to render ui components while remaining aware of the conversation and currently displayed github information.
